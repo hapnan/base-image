@@ -1,7 +1,7 @@
-ARG IMAGE_BASE="nvidia/cuda:11.8.0-base-ubuntu22.04"
+ARG IMAGE_BASE="nvidia/cuda:12.5.1-base-ubuntu24.04"
 
 # Caddy build
-FROM ubuntu:22.04 as caddybuilder
+FROM ubuntu:24.04 as caddybuilder
 
 ENV PATH=/opt/go/bin:$PATH
 ENV GOROOT=/opt/go

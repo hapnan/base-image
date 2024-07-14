@@ -5,18 +5,6 @@ services:
       context: ./build
       args:
         # Remove as appropriate
-<<<<<<< HEAD
-        IMAGE_BASE: ${IMAGE_BASE:-nvidia/cuda:12.5.1-base-ubuntu22.04}
-        IMAGE_TAG: ${IMAGE_TAG:-v2-cuda-12.5.1-runtime-22.04}
-        XPU_TARGET: ${XPU_TARGET:-NVIDIA_GPU}
-        CUDA_STRING: ${CUDA_STRING:-12.5.1-base}
-        ROCM_STRING: ${ROCM_STRING:-5.7-base}
-      tags:
-        - "hapnan/base-image:${IMAGE_TAG:-v2-cuda-12.5.1-base-22.04}"
-
-    image: hapnan/base-image:${IMAGE_TAG:-v2-cuda-12.5.1-base-22.04}
-
-=======
         IMAGE_BASE: ${IMAGE_BASE:-nvidia/cuda:12.5.1-base-ubuntu24.04}
         IMAGE_TAG: ${IMAGE_TAG:-v2-cuda-12.5.1-runtime-24.04}
         XPU_TARGET: ${XPU_TARGET:-NVIDIA_GPU}
@@ -26,7 +14,6 @@ services:
         
     image: hapnan/base-image:${IMAGE_TAG:-v2-cuda-12.5.1-base-24.04}
     
->>>>>>> 59183ee (wsl)
     ## For Nvidia GPU's - You probably want to uncomment this
     deploy:
       resources:
@@ -50,41 +37,6 @@ services:
       - ./config/provisioning/default.sh:/opt/ai-dock/bin/provisioning.sh
 
     ports:
-<<<<<<< HEAD
-      # SSH available on host machine port 2222 to avoid conflict. Change to suit
-      - ${SSH_PORT_HOST:-2222}:22
-      # Syncthing
-      - ${SYNCTHING_UI_PORT_HOST:-8384}:${SYNCTHING_UI_PORT_HOST:-8384}
-      - ${SYNCTHING_TRANSPORT_PORT_HOST:-22999}:${SYNCTHING_TRANSPORT_PORT_HOST:-22999}
-      # Caddy port for service portal
-      - ${SERVICEPORTAL_PORT_HOST:-1111}:${SERVICEPORTAL_PORT_HOST:-1111}
-      - 8080:8080/udp
-      - 8181:8181
-      - 4455:4455
-
-    environment:
-      # Important: Edit values in .env - not here.
-      # Don't enclose values in quotes
-      - DIRECT_ADDRESS=${DIRECT_ADDRESS:-127.0.0.1}
-      - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-false}
-      - WORKSPACE=${WORKSPACE:-/workspace}
-      - WORKSPACE_SYNC=${WORKSPACE_SYNC:-false}
-      - CF_TUNNEL_TOKEN=${CF_TUNNEL_TOKEN:-eyJhIjoiZWFkNzQ3ZjBkODFmY2NiY2IwYjcyMWE4NWQ4ZmI1ZDMiLCJ0IjoiOGMxYzgwOTEtYjFiZC00ZmM0LThiYTQtNmZiMmQ4ZTE5OTQ4IiwicyI6IlpUSm1OV0l6T0dFdE5EazNNUzAwTUdWaUxUaGtNMk10WXpBMU1qWTBabU13WkRFeiJ9}
-      - CF_QUICK_TUNNELS=${CF_QUICK_TUNNELS:-true}
-      - WEB_ENABLE_AUTH=${WEB_ENABLE_AUTH:-true}
-      - WEB_USER=${WEB_USER:-user}
-      - WEB_PASSWORD=${WEB_PASSWORD:-password}
-      - SERVERLESS=${SERVERLESS:-false}
-      - SYNCTHING_UI_PORT_HOST=${SYNCTHING_UI_PORT_HOST:-8384}
-      - SYNCTHING_URL=${SYNCTHING_URL:-}
-      - SYNCTHING_TRANSPORT_PORT_HOST=${SYNCTHING_TRANSPORT_PORT_HOST:-22999}
-      - SSH_PORT_HOST=${SSH_PORT_HOST:-2222}
-      - SERVICEPORTAL_PORT_HOST=${SERVICEPORTAL_PORT_HOST:-1111}
-      - SERVICEPORTAL_METRICS_PORT=${SERVICEPORTAL_METRICS_PORT:-21111}
-      - SERVICEPORTAL_URL=${SERVICEPORTAL_URL:-}
-      - NODE_VERSION=node
-      #- PROVISIONING_SCRIPT=https://raw.githubusercontent.com/ai-dock/base-image/main/config/provisioning/default.sh
-=======
         # SSH available on host machine port 2222 to avoid conflict. Change to suit
         - ${SSH_PORT_HOST:-2222}:22
         # Syncthing
@@ -118,4 +70,3 @@ services:
         - SERVICEPORTAL_URL=${SERVICEPORTAL_URL:-}
         - NODE_VERSION=node
         #- PROVISIONING_SCRIPT=https://raw.githubusercontent.com/ai-dock/base-image/main/config/provisioning/default.sh
->>>>>>> 59183ee (wsl)

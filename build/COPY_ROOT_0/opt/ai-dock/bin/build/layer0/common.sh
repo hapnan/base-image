@@ -94,16 +94,9 @@ python3 -m venv "$SERVICEPORTAL_VENV"
 "$SERVICEPORTAL_VENV_PIP" install \
     --no-cache-dir -r /opt/ai-dock/fastapi/requirements.txt
 
-<<<<<<< HEAD
-echo "Get Cloudflare daemon"
-curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb 
-sudo dpkg -i cloudflared.deb 
-sudo cloudflared service install $CF_TUNNEL_TOKEN
-=======
 # Get Cloudflare daemon
 curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 sudo dpkg -i cloudflared.deb
->>>>>>> 59183ee (wsl)
 
 # Prepare environment for running SSHD
 chmod 700 /root
