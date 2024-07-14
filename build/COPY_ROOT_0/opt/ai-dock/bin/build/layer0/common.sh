@@ -42,14 +42,15 @@ $APT_INSTALL \
     less \
     libcap2-bin \
     libelf1 \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
-    libtcmalloc-minimal4 \
+    libgl1 \
+    libglx-mesa0 \
+    libglib2.0-0t64 \
+    libtcmalloc-minimal4t64 \
     locales \
     lsb-release \
     lsof \
     man \
-    mlocate \
+    plocate \
     net-tools \
     nano \
     openssh-server \
@@ -89,14 +90,20 @@ apt update
 locale-gen en_US.UTF-8
 
 # Install 
-python3.10 -m venv "$SERVICEPORTAL_VENV"
+python3 -m venv "$SERVICEPORTAL_VENV"
 "$SERVICEPORTAL_VENV_PIP" install \
     --no-cache-dir -r /opt/ai-dock/fastapi/requirements.txt
 
+<<<<<<< HEAD
 echo "Get Cloudflare daemon"
 curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb 
 sudo dpkg -i cloudflared.deb 
 sudo cloudflared service install $CF_TUNNEL_TOKEN
+=======
+# Get Cloudflare daemon
+curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+sudo dpkg -i cloudflared.deb
+>>>>>>> 59183ee (wsl)
 
 # Prepare environment for running SSHD
 chmod 700 /root

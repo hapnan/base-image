@@ -7,8 +7,8 @@ ENV PATH=/opt/go/bin:$PATH
 ENV GOROOT=/opt/go
 RUN apt-get update && \
     apt-get install -y wget && \
-    wget https://dl.google.com/go/go1.22.4.linux-amd64.tar.gz && \
-    tar -xf go1.22.4.linux-amd64.tar.gz && \
+    wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz && \
+    tar -xf go1.22.5.linux-amd64.tar.gz && \
     mv ./go /opt && \ 
     wget https://github.com/caddyserver/xcaddy/releases/download/v0.4.2/xcaddy_0.4.2_linux_amd64.deb && \
     apt-get install ./xcaddy_0.4.2_linux_amd64.deb && \
@@ -32,7 +32,7 @@ COPY --from=caddybuilder /opt/caddy/ /opt/caddy/
 ARG XPU_TARGET="GPU_NVIDIA" # GPU_AMD, CPU
 ENV XPU_TARGET=${XPU_TARGET}
 
-ARG NODE_VERSION=v22.2.0
+ARG NODE_VERSION=node
 ENV NODE_VERSION=${NODE_VERSION}
 
 LABEL org.opencontainers.image.source https://github.com/ai-dock/base-image
