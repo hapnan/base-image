@@ -82,6 +82,7 @@ ln -sf $(ldconfig -p | grep -Po "libtcmalloc_minimal.so.\d" | head -n 1) \
         /lib/x86_64-linux-gnu/libtcmalloc.so
 
 # Ensure deadsnakes is available for Python versions not included with base distribution
+echo "deadsnakes"
 add-apt-repository ppa:deadsnakes/ppa
 apt update
   
@@ -92,10 +93,10 @@ python3.10 -m venv "$SERVICEPORTAL_VENV"
 "$SERVICEPORTAL_VENV_PIP" install \
     --no-cache-dir -r /opt/ai-dock/fastapi/requirements.txt
 
-# Get Cloudflare daemon
-wget -c -O cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-dpkg -i cloudflared.deb
-rm cloudflared.deb
+echo "Get Cloudflare daemon"
+curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb 
+sudo dpkg -i cloudflared.deb 
+sudo cloudflared service install $CF_TUNNEL_TOKEN
 
 # Prepare environment for running SSHD
 chmod 700 /root
