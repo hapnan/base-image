@@ -57,7 +57,7 @@ jobs:
       -
         name: Set tags
         run: |
-          img_path="hapnan/${{ env.PACKAGE_NAME }}"
+          img_path="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PACKAGE_NAME }}"
           
           base_tag="cuda-${{ matrix.build.cuda }}-${{ env.UBUNTU_VERSION }}"
 
