@@ -1,7 +1,7 @@
 ARG IMAGE_BASE="nvidia/cuda:12.5.1-base-ubuntu24.04"
 
 # Caddy build
-FROM ubuntu:24.04 as caddybuilder
+FROM ubuntu:24.04 AS caddybuilder
 
 ENV PATH=/opt/go/bin:$PATH
 ENV GOROOT=/opt/go
@@ -78,3 +78,4 @@ RUN yes | unminimize && \
 
 # Keep init.sh as-is and place additional logic in /opt/ai-dock/bin/preflight.d
 CMD ["init.sh"]
+

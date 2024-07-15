@@ -6,13 +6,13 @@ services:
       args:
         # Remove as appropriate
         IMAGE_BASE: ${IMAGE_BASE:-nvidia/cuda:12.5.1-base-ubuntu24.04}
-        IMAGE_TAG: ${IMAGE_TAG:-v2-cuda-12.5.1-runtime-24.04}
+        IMAGE_TAG: ${IMAGE_TAG:-cuda-12.5.1-runtime-24.04}
         XPU_TARGET: ${XPU_TARGET:-NVIDIA_GPU}
         CUDA_STRING: ${CUDA_STRING:-12.5.1-base}
       tags:
-        - "hapnan/base-image:${IMAGE_TAG:-v2-cuda-12.5.1-base-24.04}"
+        - "hapnan/base-image:${IMAGE_TAG:-cuda-12.5.1-base-24.04}"
         
-    image: hapnan/base-image:${IMAGE_TAG:-v2-cuda-12.5.1-base-24.04}
+    image: hapnan/base-image:${IMAGE_TAG:-cuda-12.5.1-base-24.04}
     
     ## For Nvidia GPU's - You probably want to uncomment this
     deploy:
