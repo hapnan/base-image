@@ -81,6 +81,7 @@ jobs:
             XPU_TARGET=NVIDIA_GPU
             CUDA_STRING=${{ matrix.build.cuda }}
           push: true
-          
+          secrets: |
+            DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
           provenance: false
           tags: ${{ env.TAGS }}
