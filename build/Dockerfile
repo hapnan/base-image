@@ -29,7 +29,7 @@ ENV LD_LIBRARY_PATH=
 COPY --from=caddybuilder /opt/caddy/ /opt/caddy/
 
 # Determines which scripts at /opt/ai-dock/bin/build/layerX will be run by init.sh
-ARG XPU_TARGET="GPU_NVIDIA" # GPU_AMD, CPU
+ARG XPU_TARGET="NVIDIA_GPU" # GPU_AMD, CPU
 ENV XPU_TARGET=${XPU_TARGET}
 
 ARG NODE_VERSION=node
