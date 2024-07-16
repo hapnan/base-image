@@ -38,7 +38,7 @@ jobs:
           echo "PACKAGE_NAME=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
       -
         name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.7
       -
         name: Permissions fixes
         run: |

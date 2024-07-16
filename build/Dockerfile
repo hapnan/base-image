@@ -35,9 +35,9 @@ ENV XPU_TARGET=${XPU_TARGET}
 ARG NODE_VERSION=node
 ENV NODE_VERSION=${NODE_VERSION}
 
-LABEL org.opencontainers.image.source https://github.com/ai-dock/base-image
+LABEL org.opencontainers.image.source=https://github.com/ai-dock/base-image
 
-LABEL org.opencontainers.image.description "Base image for ai-dock."
+LABEL org.opencontainers.image.description="Base image for ai-dock."
 
 LABEL maintainer="Rob Ballantyne <rob@dynamedia.uk>"
 
