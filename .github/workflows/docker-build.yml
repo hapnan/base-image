@@ -58,20 +58,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Set tags
-        run: |
-          img_path="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.PACKAGE_NAME }}"
-          
-          base_tag="cuda-${{ matrix.build.cuda }}-${{ env.UBUNTU_VERSION }}"
-
-          if [[ ${{ matrix.build.latest }} == "true" ]]; then
-              echo "Marking latest"
-              TAGS="${img_path}:${base_tag}, ${img_path}:latest-cuda, ${img_path}:latest"
-          else
-              TAGS="${img_path}:${base_tag}"
-          fi
-          echo "TAGS=${TAGS}" >> ${GITHUB_ENV}
-      -
         name: Build and push
         uses: docker/build-push-action@v6.4.0
         with:
@@ -85,4 +71,4 @@ jobs:
             DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
           provenance: false
           no-cache: true
-          tags: ${{ env.TAGS }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/base-image:cuda-${{ matrix.build.cuda }}-${{ env.UBUNTU_VERSION }}

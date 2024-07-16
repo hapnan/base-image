@@ -111,7 +111,7 @@ rm -f /etc/update-motd.d/10-help-text
 # Ensure critical paths/files are present
 mkdir -p --mode=0755 /etc/apt/keyrings
 mkdir -p --mode=0755 /run/sshd
-chown -R root.ai-dock /var/log
+chown -R root.ai-dock:/var/log
 chmod -R g+w /var/log
 chmod -R g+s /var/log
 mkdir -p /var/log/supervisor
