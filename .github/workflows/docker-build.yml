@@ -48,6 +48,9 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3.4.0
+        with:
+          buildkitd-flags: --debug
+          driver: docker
       -
         name: Login to GitHub Container Registry
         uses: docker/login-action@v3.2.0
@@ -78,5 +81,6 @@ jobs:
             XPU_TARGET=NVIDIA_GPU
             CUDA_STRING=${{ matrix.build.cuda }}
           push: true
+          
           provenance: false
           tags: ${{ env.TAGS }}
