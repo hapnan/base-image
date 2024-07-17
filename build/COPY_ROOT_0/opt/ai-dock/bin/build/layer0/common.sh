@@ -9,7 +9,7 @@ mkdir -p /opt/environments/{python,javascript}
 
 dpkg --add-architecture i386
 apt-get update
-apt-get upgrade -y --no-install-recommends
+apt-get upgrade -y
 
 # System packages
 $APT_INSTALL \
